@@ -33,14 +33,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        /* Form
-        * Arg1: Config dir
-        * Arg2: result dir
-        * Arg3: Num of tweets
-        * Arg4: Query term, "term1 term2 term3"
-        * Arg5: Date from where to start looking
-        * */
+        
 
         final int tweetsInQuery = 100; // Max 100 min 15
         final String baseDir = "/Users/daniel/Documents/UMKC/Spring2016/PrinciplesOfBigData/TweetData";

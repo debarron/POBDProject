@@ -27,7 +27,7 @@ public class Main {
                 "\t >> result: Path to the file where the program will store the result \n" +
                 "\t >> tweets: Number of tweets to collect  \n" +
                 "\t >> query: Terms of the search, format: \"term1 term2\" \n" +
-                "\t >> date: Start the search from this date (optional), format: YYYY-MM-DD\n\n";
+                "\t >> id: Start the search from this id (optional), \n\n";
 
         System.out.println(message);
     }
@@ -52,6 +52,8 @@ public class Main {
         String configDirBatch;
         String outputDir;
         String date = "";
+        String dateUntil = "";
+        long tid = 1;
 
         // Display help
         if(args.length == 0){
@@ -62,7 +64,10 @@ public class Main {
         outputDir = args[1];
         tweetAmount = Integer.parseInt(args[2]);
         stringQuery = args[3];
-        date = (args.length > 4) ? args[4] : null;
+
+        if (args.length > 4) {
+            tid = Long.parseLong(args[4]);
+        }
 
 
 //        configDir = baseDir + "/config3.txt";
@@ -86,8 +91,9 @@ public class Main {
                     writer
             );
 
-            if(date != null)
-                scanner.setTweetDate(date);
+            if(tid != -1){
+                scanner.setPathMaxID(tid);
+            }
 
             scanner.computeBatch(configDir);
         }

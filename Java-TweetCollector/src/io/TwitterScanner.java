@@ -21,6 +21,8 @@ public class TwitterScanner {
     private long limitMaxId;
     private int limitTweetsInMemory;
 
+    private long pathMaxID;
+
     private int _tweetAmount;
     private int _tweetsCount;
     private int _tweetsInQuery;
@@ -53,6 +55,8 @@ public class TwitterScanner {
         limitTweetsInMemory = tweetsInMemory;
 
         this.tweetDate = "";
+
+        this.setPathMaxID(-1);
 
         init();
     }
@@ -163,6 +167,8 @@ public class TwitterScanner {
             // While we haven't finished with the tweets
             do{
 
+                long id = 0;
+
                 for(TwitterBatchConfiguration conf : configList) {
 
                     if (_tweetsCount > _tweetAmount) break;
@@ -171,14 +177,20 @@ public class TwitterScanner {
                     limitNumOfQueries = conf._limitQueriesLeft;
                     temporaryQueriesCount = 0;
 
+
                     for (int i = 0; i < limitNumOfQueries; i++) {
+
+
                         QueryResult twitterResult = getQueryResult(conf);
 
                         // Get the result
                         List<Status> tweets = twitterResult.getTweets();
                         temporaryTweetStorage.addAll(tweets);
 
-                        long id = getMaxId(tweets);
+                        id = getMaxId(tweets);
+                        setPathMaxID(id);
+
+
                         conf._twitterQuery.setMaxId(id);
                         tweetDate = getDateFromId(tweets, id);
 
@@ -204,7 +216,7 @@ public class TwitterScanner {
                     System.out.println(" ## Finish with one configuration, get another");
                 }
 
-                System.out.println("Last date computed: " + tweetDate);
+                System.out.println("Last ID computed: " + id);
                 System.out.printf("Finish with all the configuration, start again?");
 
 
@@ -224,6 +236,9 @@ public class TwitterScanner {
 
     private QueryResult getQueryResult(TwitterBatchConfiguration conf) throws TwitterException {
         long currentMillis = System.currentTimeMillis();
+
+        conf._twitterQuery.setMaxId(getPathMaxID());
+
         QueryResult twitterResult = conf._twitterInterface.search(conf._twitterQuery);
         addTime(currentMillis, System.currentTimeMillis());
 
@@ -287,5 +302,21 @@ public class TwitterScanner {
     public void setTweetDate(String tweetDate) {
         this.tweetDate = tweetDate;
         this.twitterQuery.setSince(this.tweetDate);
+    }
+
+    public void setTweetDateUntil(String dateUntil) {
+        this.twitterQuery.setUntil(dateUntil);
+    }
+
+    public void setLastId(long tid) {
+        twitterQuery.setMaxId(tid);
+    }
+
+    public long getPathMaxID() {
+        return pathMaxID;
+    }
+
+    public void setPathMaxID(long pathMaxID) {
+        this.pathMaxID = pathMaxID;
     }
 }

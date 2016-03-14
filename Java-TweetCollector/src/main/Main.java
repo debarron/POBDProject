@@ -20,6 +20,18 @@ https://github.com/yusuke/twitter4j
 public class Main {
 
 
+    public static void displayHelp(){
+        String message = "USAGE of TweetCollector \n" +
+                "\t console: java -jar TweetCollector.jar <config> <result> <twets> <query> <date> \n" +
+                "\t >> config: Complete path to the config file \n" +
+                "\t >> result: Path to the file where the program will store the result \n" +
+                "\t >> tweets: Number of tweets to collect  \n" +
+                "\t >> query: Terms of the search, format: \"term1 term2\" \n" +
+                "\t >> date: Start the search from this date (optional), format: YYYY-MM-DD\n\n";
+
+        System.out.println(message);
+    }
+
     public static void main(String[] args) {
 
         /* Form
@@ -27,6 +39,7 @@ public class Main {
         * Arg2: result dir
         * Arg3: Num of tweets
         * Arg4: Query term, "term1 term2 term3"
+        * Arg5: Date from where to start looking
         * */
 
         final int tweetsInQuery = 100; // Max 100 min 15
@@ -40,19 +53,24 @@ public class Main {
         String outputDir;
         String date = "";
 
-        configDir = baseDir + "/config.txt";
-        configDirBatch = baseDir + "/config2.txt";
-        outputDir = baseDir + "/test-election2016-batch-2.json";
-        tweetAmount = 100000;
-        stringQuery = "election2016";
-
+        // Display help
+        if(args.length == 0){
+            displayHelp();
+            System.exit(1);
+        }
+        configDir = args[0];
+        outputDir = args[1];
+        tweetAmount = Integer.parseInt(args[2]);
+        stringQuery = args[3];
         date = (args.length > 4) ? args[4] : null;
 
 
-//        configDir = args[0];
-//        outputDir = args[1];
-//        tweetAmount = Integer.parseInt(args[2]);
-//        stringQuery = args[3];
+//        configDir = baseDir + "/config3.txt";
+//        outputDir = baseDir + "/test-election2016-batch-2.json";
+//        tweetAmount = 100000;
+//        stringQuery = "#ClimateChange";
+//        date = "2010-01-13";
+//        date = "2007-02-04";
 
 
         // Count the tweets, lets see how much it takes to reach 1K
@@ -71,7 +89,7 @@ public class Main {
             if(date != null)
                 scanner.setTweetDate(date);
 
-            scanner.computeBatch(configDirBatch);
+            scanner.computeBatch(configDir);
         }
         catch (Exception twE){
             twE.printStackTrace();

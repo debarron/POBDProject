@@ -20,6 +20,12 @@ public class TwitterConfiguration {
     private String consumerSecret;
     private String accessToken;
     private String accessTokenSecret;
+    private String tweetDate;
+
+
+    public void setTweetDate(String date){
+        tweetDate = date;
+    }
 
     public TwitterConfiguration(){}
     public TwitterConfiguration(String consumerKey, String consumerSecret,
@@ -87,6 +93,9 @@ public class TwitterConfiguration {
             ).getInstance();
 
             newBatchConfig = new TwitterBatchConfiguration(twitterInterface, queryStr, tweetsInQuery);
+            newBatchConfig.setQueryDate(tweetDate);
+
+
             result.add(newBatchConfig);
         }
 

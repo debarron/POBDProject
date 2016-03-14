@@ -32,7 +32,7 @@ public class TwitterBatchConfiguration {
     }
 
 //    Format should be YYYY-MM-DD
-    private void setQueryDate(String dateSince){
+    public void setQueryDate(String dateSince){
         this._twitterQuery.setSince(dateSince);
     }
 

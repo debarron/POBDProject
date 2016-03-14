@@ -156,8 +156,9 @@ public class TwitterScanner {
         resetTime();
         resetTweetCounter();
         try {
-            configList = new TwitterConfiguration()
-              .getConfigurations(batchConfigPath, _strQuery, _tweetsInQuery);
+            TwitterConfiguration conf1 = new TwitterConfiguration();
+            conf1.setTweetDate(tweetDate);
+            configList = conf1.getConfigurations(batchConfigPath, _strQuery, _tweetsInQuery);
 
             // While we haven't finished with the tweets
             do{
@@ -176,11 +177,17 @@ public class TwitterScanner {
                         // Get the result
                         List<Status> tweets = twitterResult.getTweets();
                         temporaryTweetStorage.addAll(tweets);
-                        conf._twitterQuery.setMaxId(getMaxId(tweets));
+
+                        long id = getMaxId(tweets);
+                        conf._twitterQuery.setMaxId(id);
+                        tweetDate = getDateFromId(tweets, id);
+
                         _tweetsCount += tweets.size();
                         temporaryQueriesCount++;
 
                         printInfo();
+
+                        if (_tweetsCount > _tweetAmount) break;
                     }
 
                     System.out.println(" >> Writing into disk");
@@ -279,5 +286,6 @@ public class TwitterScanner {
 
     public void setTweetDate(String tweetDate) {
         this.tweetDate = tweetDate;
+        this.twitterQuery.setSince(this.tweetDate);
     }
 }

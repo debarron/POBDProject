@@ -1,0 +1,39 @@
+	
+I am no expert, but in my case it helped editing:
+
+project/Versions.scala -> val Spark = "1.4.0" -> "1.4.1".
+
+Although it is actually a mystery to me why it did help :).
+
+EDIT:
+
+On the second thought i've noticed by accident, that the file spark-core_2.11-1.4.0.jar was broken (each time it was downloaded by sbt).
+
+It also helped to replacing .jar with valid one from:
+
+http://mvnrepository.com/artifact/org.apache.spark/spark-core_2.11/1.4.0
+
+I suppose it is somehow connected with spark-cassandra-connector build system or repo from which file is downloaded.
+
+Maybe we should file an issue.
+
+EDIT2:
+
+i found out, that broken .jar comes from (at least in my case):
+
+https://jcenter.bintray.com/org/apache/spark/spark-core_2.11/1.4.0/spark-core_2.11-1.4.0.jar
+
+you can see its origin in: .ivy2/cache/org.apache.spark/spark-core_2.11/ivydata-1.4.0.properties
+
+i did not manage to find out why it comes from jcenter (https://bintray.com/bintray/jcenter). maybe it is somehow connected with adding bintray repo to my linux mint or new version of sbt or datastax uses bintray. i will probably investigate later.
+
+shareimprove this answer
+edited Aug 30 '15 at 22:04
+answered Aug 30 '15 at 19:22
+
+zerocool
+434
+1	 	
+Thanks zerocool. By replacing the .jar it did compiled. – brunofitas Sep 24 '15 at 12:57
+add a comment
+Your Answer

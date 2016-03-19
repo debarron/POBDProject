@@ -92,6 +92,7 @@ public class TwitterConfiguration {
                     .build()
             ).getInstance();
 
+
             newBatchConfig = new TwitterBatchConfiguration(twitterInterface, queryStr, tweetsInQuery);
             newBatchConfig.setQueryDate(tweetDate);
 

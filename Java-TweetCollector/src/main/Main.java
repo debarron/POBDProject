@@ -33,7 +33,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        
+
 
         final int tweetsInQuery = 100; // Max 100 min 15
         final String baseDir = "/Users/daniel/Documents/UMKC/Spring2016/PrinciplesOfBigData/TweetData";

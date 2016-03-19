@@ -171,6 +171,8 @@ public class TwitterScanner {
 
                 for(TwitterBatchConfiguration conf : configList) {
 
+                    if (conf == null) continue;
+
                     if (_tweetsCount > _tweetAmount) break;
 
                     _totalMillisecs = conf._limitMillisToWait;
@@ -185,6 +187,9 @@ public class TwitterScanner {
 
                         // Get the result
                         List<Status> tweets = twitterResult.getTweets();
+
+                        if (tweets.isEmpty()) continue;
+
                         temporaryTweetStorage.addAll(tweets);
 
                         id = getMaxId(tweets);

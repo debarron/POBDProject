@@ -5,12 +5,10 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by daniel on 1/25/16.
@@ -51,6 +49,65 @@ public class TwitterConfiguration {
 
         config.setJSONStoreEnabled(true);
         return config.build();
+    }
+
+    private List<String[]> readFileConfigurations(String fileDir) throws IOException {
+        int configsCount;
+        String[] config;
+        ArrayList<String []> configs = new ArrayList<>();
+        BufferedReader fileBuffer = new BufferedReader(new FileReader(fileDir));
+
+        configsCount = Integer.parseInt(fileBuffer.readLine().trim());
+        for(int i = 0; i < configsCount; i++){
+            config = new String[4];
+            fileBuffer.readLine();
+
+            for (int j = 0; j < 4; j++)
+                config[j] = fileBuffer.readLine();
+
+            configs.add(config);
+        }
+
+        fileBuffer.close();
+        return configs;
+    }
+
+
+    private Configuration buildConfigFromParams(String[] config){
+        ConfigurationBuilder temp = new ConfigurationBuilder();
+
+        temp.setDebugEnabled(true);
+        temp.setOAuthConsumerKey(config[0]);
+        temp.setOAuthConsumerSecret(config[1]);
+        temp.setOAuthAccessToken(config[2]);
+        temp.setOAuthAccessTokenSecret(config[3]);
+        temp.setJSONStoreEnabled(true);
+
+        return temp.build();
+    }
+
+    public List<TwitterBatchConfiguration> getConfigurations1(
+            String fileDir, String queryStr, int tweetsInQuery) throws IOException {
+
+        ArrayList<TwitterBatchConfiguration> result = new ArrayList<>();
+        List<String[]> configList = readFileConfigurations(fileDir);
+        for(String[] config : configList){
+
+            Configuration temp = buildConfigFromParams(config);
+            Twitter twitterInterface = new TwitterFactory(temp).getInstance();
+
+            try {
+                TwitterBatchConfiguration newBatch = new TwitterBatchConfiguration(twitterInterface, queryStr, tweetsInQuery);
+                newBatch.setQueryDate(tweetDate);
+                result.add(newBatch);
+            }
+            catch(TwitterException t){
+                System.out.println(">> Impossible to create a configuration for: ");
+                System.out.println(">> consumer key: " + config[0]);
+            }
+        }
+
+        return result;
     }
 
     public List<TwitterBatchConfiguration> getConfigurations(

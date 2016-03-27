@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import com.google.gson.*;
 
 /**
  * Created by daniel on 1/24/16.
@@ -52,8 +53,9 @@ public class TwitterFileWriter implements ITweetReceiver{
         _dataFileLen += list.size();
         StringBuilder buff = new StringBuilder();
 
+        Gson parser = new Gson();
         for(Status tweet : list)
-            buff.append(TwitterObjectFactory.getRawJSON(tweet) + eol);
+            buff.append(parser.toJson(tweet) + eol);
 
         buffer.append(buff.toString());
     }

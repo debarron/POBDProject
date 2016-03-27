@@ -50,7 +50,6 @@ public class TwitterScanner {
         _strQuery = strSearchQuery;
         _tweetsInQuery = tweetsInQuery;
         _tweetAmount = tweetAmount;
-        _twitterConfig = twitterConfig;
         this.delegate = delegate;
         limitTweetsInMemory = tweetsInMemory;
 
@@ -152,6 +151,98 @@ public class TwitterScanner {
 
 
     }
+
+
+    private List<TwitterBatchConfiguration> getConfigurationList(TwitterConfiguration configuration, String dir) throws IOException, TwitterException {
+        return configuration.getConfigurations1(dir, _strQuery, _tweetsInQuery);
+    }
+
+    private void restartConfigLimits(TwitterBatchConfiguration conf){
+        _totalMillisecs = conf._limitMillisToWait;
+        limitNumOfQueries = conf._limitQueriesLeft;
+        temporaryQueriesCount = 0;
+    }
+
+    private long preceedToStorage(List<Status> tweets, TwitterBatchConfiguration configuration){
+        long id = getMaxId(tweets);
+        setPathMaxID(id);
+
+        configuration._twitterQuery.setMaxId(id);
+
+        temporaryTweetStorage.addAll(tweets);
+        _tweetsCount += tweets.size();
+        temporaryQueriesCount++;
+
+        return id;
+    }
+
+    private void printConfInfo() throws IOException, InterruptedException {
+        System.out.println(" >> Writing into disk");
+        delegate.doTweetStorage(temporaryTweetStorage);
+        delegate.flushTweetStorage();
+        temporaryTweetStorage.clear();
+
+        System.out.println(" ## Getting a good sleep for " +
+                (limitSecondsToRest / 1000) / 2 + " secs");
+        temporaryQueriesCount = 0;
+        Thread.sleep(limitSecondsToRest / 2);
+        System.out.println(" ## Up and running");
+
+        System.out.println(" ## Finish with one configuration, get another");
+    }
+
+    // Code update
+    public void computeBatch1(String batchConfigPath){
+        List<TwitterBatchConfiguration> configList;
+
+        resetTime();
+        resetTweetCounter();
+
+        try {
+            TwitterConfiguration conf1 = new TwitterConfiguration();
+            configList = getConfigurationList(conf1, batchConfigPath);
+
+            boolean isFinished = false;
+            do{
+                long id = 0;
+                for(TwitterBatchConfiguration conf : configList) {
+                    // Tweets have been collected, go gome!
+                    if(isFinished) break;
+
+                    // The config object is null, do something
+                    if (conf == null) continue;
+                    restartConfigLimits(conf);
+
+                    for (int i = 0; i < limitNumOfQueries && !isFinished; i++) {
+                        // Get the result
+                        QueryResult twitterResult = getQueryResult(conf);
+                        List<Status> tweets = twitterResult.getTweets();
+
+                        if (tweets.isEmpty()) continue;
+
+                        id = preceedToStorage(tweets, conf);
+                        printInfo();
+                        isFinished = _tweetsCount > _tweetAmount;
+                    }
+                    printConfInfo();
+                }
+
+                System.out.println("Last ID computed: " + id);
+                System.out.printf("Finish with all the configuration, start again?");
+
+            }while(isFinished);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        System.out.println("End of the program");
+    }
+
 
     public void computeBatch(String batchConfigPath){
         List<TwitterBatchConfiguration> configList;

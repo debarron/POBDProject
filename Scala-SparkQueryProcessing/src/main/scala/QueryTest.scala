@@ -105,7 +105,7 @@ object QueryTest {
     val HTDistribution = getDistributionFromHT(differentHT, total)
 
     println(s"The total is $total")
-    HTDistribution.foreach(println)
+//    HTDistribution.foreach(println)
 
     val resultsQ1 = differentLanguages.count()
     val resultsQ2 = getDistributionFromLanguage(aggregateLanguages, data.count())
@@ -113,6 +113,24 @@ object QueryTest {
     val resultsQ4 = differentHT
     val resultsQ5 = getDistributionFromHT(differentHT, total)
 
+
+    println(resultsQ1)
+    println(">> \n")
+    println("[")
+//    resultsQ2.foreach{item =>
+//      val v = item
+//      println(s"{'lang': ${item.}, " +
+//        s"'count':${item._._1}, " +
+//        s"'percentage':${item._._1}},")
+//    }
+    println("]")
+
+    println("\n>> \n")
+    resultsQ3.foreach(println)
+    println(">> \n")
+    resultsQ4.foreach(println)
+    println(">> \n")
+    resultsQ5.foreach(println)
 
 
 //    differentHT.foreach(println)

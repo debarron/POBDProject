@@ -16,9 +16,6 @@ class WebSocket(port : Int) {
     println(msg)
   }
 
-  def startWebSocket(): Unit ={
-    var ws = new WebSocket
-  }
 
   def startListen(): Unit ={
     var socket : ServerSocket = null

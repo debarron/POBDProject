@@ -75,6 +75,7 @@ public class TwitterBatchScanner {
 
     private void restartConfigLimits(TwitterBatchConfiguration conf){
         _totalMillisecs = conf._limitMillisToWait;
+        limitSecondsToRest = conf._limitMillisToWait;
         limitNumOfQueries = conf._limitQueriesLeft;
         temporaryQueriesCount = 0;
     }
@@ -92,19 +93,26 @@ public class TwitterBatchScanner {
         return id;
     }
 
-    private void printConfInfo() throws IOException, InterruptedException {
-        System.out.println(" >> Writing into disk");
-        delegate.doTweetStorage(temporaryTweetStorage);
-        delegate.flushTweetStorage();
-        temporaryTweetStorage.clear();
+    private void printConfInfo() {
+        try {
+            if(temporaryTweetStorage.size() == 0) return;
 
-        System.out.println(" ## Getting a good sleep for " +
-                (limitSecondsToRest / 1000) / 2 + " secs");
-        temporaryQueriesCount = 0;
-        Thread.sleep(limitSecondsToRest / 2);
-        System.out.println(" ## Up and running");
+            System.out.println(" >> Writing into disk");
+            delegate.doTweetStorage(temporaryTweetStorage);
+            delegate.flushTweetStorage();
+            temporaryTweetStorage.clear();
 
-        System.out.println(" ## Finish with one configuration, get another");
+            System.out.println(" ## Getting a good sleep for " +
+                    (limitSecondsToRest / 1000) / 2 + " secs");
+            temporaryQueriesCount = 0;
+            Thread.sleep(limitSecondsToRest / 2);
+            System.out.println(" ## Up and running");
+
+            System.out.println(" ## Finish with one configuration, get another");
+        }
+        catch(Exception p){
+            p.printStackTrace();
+        }
     }
 
     // Code update
@@ -120,7 +128,7 @@ public class TwitterBatchScanner {
 
             boolean isFinished = false;
             do{
-                long id = 0;
+                long id = -1;
                 for(TwitterBatchConfiguration conf : configList) {
                     // Tweets have been collected, go gome!
                     if(isFinished) break;
@@ -152,8 +160,9 @@ public class TwitterBatchScanner {
             e.printStackTrace();
         } catch (TwitterException e) {
             e.printStackTrace();
-        } catch (InterruptedException e){
-            e.printStackTrace();
+        }
+        finally {
+            printConfInfo();
         }
 
         System.out.println("End of the program");

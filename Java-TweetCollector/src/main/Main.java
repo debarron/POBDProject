@@ -47,29 +47,34 @@ public class Main {
         String outputDir;
         String date = "";
         String dateUntil = "";
-        long tid = 1;
+        long tid = -1;
 
 //        // Display help
-        if(args.length == 0){
-            displayHelp();
-            System.exit(1);
-        }
-        configDir = args[0];
-        outputDir = args[1];
-        tweetAmount = Integer.parseInt(args[2]);
-        stringQuery = args[3];
+//        if(args.length == 0){
+//            displayHelp();
+//            System.exit(1);
+//        }
+//        configDir = args[0];
+//        outputDir = args[1];
+//        tweetAmount = Integer.parseInt(args[2]);
+//        stringQuery = args[3];
 
         if (args.length > 4) {
             tid = Long.parseLong(args[4]);
         }
 
 
-//        configDir = baseDir + "/config3.txt";
-//        outputDir = baseDir + "/test-election2016-batch-2017.json";
-//        tweetAmount = 1000;
-//        stringQuery = "#ClimateChange";
-//        date = "2010-01-13";
-//        date = "2007-02-04";
+        configDir = baseDir + "/config6.txt";
+        outputDir = baseDir + "/data-ActionOnChange-1-1.json";
+        outputDir = baseDir + "/data-Positive-1-1.json";
+        tweetAmount = 100000;
+        stringQuery = "#ActionOnChange";
+
+        stringQuery = "(#actonclimate) OR (#ClimateChange) OR (#actonclimate) OR (#environment) OR (#pollution)";
+
+                /*#ClimateSkeptic, #ClimateDenial*/
+        date = "2010-01-13";
+        date = "2007-02-04";
 
 
         // Count the tweets, lets see how much it takes to reach 1K

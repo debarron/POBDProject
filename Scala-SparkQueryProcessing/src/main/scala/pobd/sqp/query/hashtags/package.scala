@@ -4,7 +4,7 @@ package pobd.sqp.query
   * Created by daniel on 4/2/16.
   */
 package object hashtags {
-  val PositiveHashTags = List("#ActionOnChange", "#actonclimate")
-  val NegativeHashTags = List("#ClimateSkeptic", "#ClimateDenial")
-  val NeutralHashTags = List("#GlobalWarming", "#ClimateChange", "#environment")
+  val PositiveHashTags = List("actiononchange", "actonclimate")
+  val NegativeHashTags = List("climateskeptic", "climatedenial")
+  val NeutralHashTags = List("globalwarming", "climatechange", "environment")
 }

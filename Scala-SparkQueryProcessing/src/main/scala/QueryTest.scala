@@ -3,13 +3,20 @@
   */
 
 import java.sql.JDBCType
+import java.util.Calendar
 
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{DataFrame, SQLContext}
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.{Row, DataFrame, SQLContext, Column}
+import pobd.sqp.query.DateTimeParser
 import pobd.sqp.query.hashtags._
 import org.apache.log4j.{FileAppender, Level, Logger, SimpleLayout}
 import org.apache.spark.{SparkConf, SparkContext}
+import pobd.sqp.query.states.USStates
+import pobd.sqp.ui.ColorGen
 import scala.collection.JavaConverters._
+
+//import scala.reflect.internal.util.TableDef.Column
 import scala.reflect.io.Path
 
 object QueryTest {
@@ -63,6 +70,80 @@ object QueryTest {
     HTDistribution
   }
 
+  // Query #1 and #2
+  def querySuportAndDeny(data : DataFrame): Seq[String] ={
+    val tweetText = data.select("text")
+      .map(it => it.toString().replace("#","").split(" "))
+
+    val tp = tweetText.filter(tweet => PositiveHashTags.exists( ht => tweet.contains(ht)))
+    val tn = tweetText.filter(tweet => NegativeHashTags.exists( ht => tweet.contains(ht)))
+    val tneu = tweetText.filter(tweet => NeutralHashTags.exists( ht => tweet.contains(ht)))
+
+    Seq(
+      ("Support", tp.count()),
+      ("Deny", tn.count()),
+      ("Neutral", tneu.count())
+    ).map(tuple =>
+      "{\"label\":\"%s\",\"value\":%d,\"color\":\"%s\"}".format(
+        tuple._1, tuple._2 , ColorGen.getRandomRGBColor
+      )
+    )
+  }
+
+  def timeSeriesData(data : DataFrame): Seq[String] ={
+    val tweetText = data.select("text")
+      .map(it => it.toString().replace("#","").split(" "))
+
+    val tp = tweetText.filter(tweet => PositiveHashTags.exists( ht => tweet.contains(ht)))
+    val tn = tweetText.filter(tweet => NegativeHashTags.exists( ht => tweet.contains(ht)))
+    val tneu = tweetText.filter(tweet => NeutralHashTags.exists( ht => tweet.contains(ht)))
+
+    Seq(
+      ("Support", tp.count()),
+      ("Deny", tn.count()),
+      ("Neutral", tneu.count())
+    ).map(tuple =>
+      "{\"label\":\"%s\",\"value\":%d,\"color\":\"%s\"}".format(
+        tuple._1, tuple._2 , ColorGen.getRandomRGBColor
+      )
+    )
+  }
+
+
+
+
+
+  // Query #6
+  def queryHowManyLanguages(data : DataFrame, column : String, total : Long, sql : SQLContext): RDD[String] ={
+    val tempData = data.groupBy(column)
+      .agg("id" -> "count")
+      .map(row =>
+        Row(
+            row.get(0).toString,
+            row.getLong(1),
+            (row.getLong(1) * 1.0) / (total * 1.0) * 100.0,
+            ((row.getLong(1) * 1.0) / (total * 1.0) * 100.0).toString,
+            row.get(0).toString,
+            ColorGen.getRandomRGBColor
+        )
+      )
+
+    val schemaQ1 = StructType(List(
+        StructField("lang", StringType, true),
+        StructField("count", LongType, true),
+        StructField("percentage", DoubleType, true),
+        StructField("value", StringType, true),
+        StructField("label", StringType, true),
+        StructField("color", StringType, true)
+
+      )
+    )
+
+    // TODO Add the JSON Array Format
+    sql.createDataFrame(tempData, schemaQ1).toJSON
+  }
+
+
   def main(args : Array[String]): Unit ={
     println(">> The value of the positive Hashtags")
     PositiveHashTags.foreach(println)
@@ -78,6 +159,16 @@ object QueryTest {
     val baseDir = "/Users/daniel/Documents/UMKC/Spring2016/PrinciplesOfBigData/TweetData"
     var db = "data-ClimateChange-04012016-1.json"
     db = "data-ClimateDenial-04012016-1.json"
+//    db = "data-Positive-1-1.json"
+
+
+
+    val baseDirStates = "/Users/daniel/Documents/" +
+      "Dev/GitHubRepos/POBDProject/CSV-ExternalData/"
+
+    val states = s"$baseDirStates/StateAb.csv"
+    val cities = s"$baseDirStates/CitiesStateAb.csv"
+
 
     // Spark and logfiles
     val conf = new SparkConf()
@@ -91,46 +182,140 @@ object QueryTest {
     logger.addAppender(appender)
     logger.setLevel(Level.OFF)
 
+
+
+
+
     println(">> Reading in SQL Dataframe style")
     val sqlContext = new SQLContext(sc)
     val data = sqlContext.read.json(s"$baseDir/$db").cache()
 
-    // Different languages
-    val differentLanguages = getDifferentValues(data, "lang")
-    val aggregateLanguages = getAggregateByColumn(data, "lang")
-    val relevantUsers = getMostRelevantUsers(data, sqlContext)
-    val differentHT = getHashTagsAsKeyValue(data.select("hashtagEntities"))
 
-    val total = differentHT.values.sum()
-    val HTDistribution = getDistributionFromHT(differentHT, total)
+    val x = data.select(
+      data("id"),
+      data("createdAt"),
+      data("text"),
+      data("user.followersCount"),
+      data("user.id").as("userid"),
+      data("favoriteCount"),
+      data("lang"),
+      data("user.location"),
+      data("hashtagEntities"),
+      data("user.location"),
+      data("quotedStatus.retweetCount"),
+      data("isRetweeted").as("rt")
+    )
 
-    println(s"The total is $total")
-//    HTDistribution.foreach(println)
+    x.registerTempTable("tdata")
+    x.printSchema()
 
-    val resultsQ1 = differentLanguages.count()
-    val resultsQ2 = getDistributionFromLanguage(aggregateLanguages, data.count())
-    val resultsQ3 = relevantUsers.take(100)
-    val resultsQ4 = differentHT
-    val resultsQ5 = getDistributionFromHT(differentHT, total)
+    val qw = querySuportAndDeny(x)
+
+    x.select("createdAt").foreach(println)
 
 
-    println(resultsQ1)
-    println(">> \n")
-    println("[")
-//    resultsQ2.foreach{item =>
-//      val v = item
-//      println(s"{'lang': ${item.}, " +
-//        s"'count':${item._._1}, " +
-//        s"'percentage':${item._._1}},")
+    val test = x.select("createdAt")
+        .filter(x("createdAt").isNotNull)
+        .map(el => el.toString().replace("[","").replace("]",""))
+        .filter(it => !it.isEmpty && it.length > 1)
+        .map(elm => new DateTimeParser().parseString(elm))
+        .map(elm => (elm , 1))
+        .reduceByKey(_+_)
+        .sortByKey(false, 3)
+
+    test.foreach(println)
+
+
+
+//
+//    val y = sqlContext.sql("SELECT * FROM tdata")
+//    val tx = sqlContext.sql("SELECT id, text, rt from tdata WHERE text not like '%RT%' ").map(row =>
+//      (row.get(0).toString, row.get(1).toString().replace("#", "").split(" "))
+//    )
+
+
+//    val tx2 = x.filter(it => it._2.exists(el => el.contains("climatedenial")))
+
+//    val tx1 = tx.filter(it => it._2.exists(el => el.contains("climateskeptic")))
+//    val tx2 = tx.filter(it => it._2.exists(el => el.contains("climatedenial")))
+//val tx3 = tx1.union(tx2).distinct()
+//    println(tx3.count())
+//    tx3.foreach(it => println(it._1 + it._2.foreach(it2 => print(it2 + " "))))
+
+//    val mData = x.map(row => row.toString)
+//    mData.foreach( item => println(item.toString + "$$ \n"))
+
+
+
+
+
+
+
+
+//    // Different languages
+//    val differentLanguages = getDifferentValues(data, "lang")
+//    val aggregateLanguages = getAggregateByColumn(data, "lang")
+//    val relevantUsers = getMostRelevantUsers(data, sqlContext)
+//    val differentHT = getHashTagsAsKeyValue(data.select("hashtagEntities"))
+//
+//    val total = differentHT.values.sum()
+//    val HTDistribution = getDistributionFromHT(differentHT, total)
+//
+//
+//    val locationsA = data.select("user.location")
+////    val locationsA = data.select("retweetedStatus.place")
+//
+//    println(s"The total is $total")
+////    HTDistribution.foreach(println)
+//
+//    val resultsQ1 = differentLanguages.count()
+//    val resultsQ2 = getDistributionFromLanguage(aggregateLanguages, data.count())
+//    val resultsQ3 = relevantUsers.take(100)
+//    val resultsQ4 = differentHT
+//    val resultsQ5 = getDistributionFromHT(differentHT, total)
+//
+//
+//    val usStates = USStates.getUSStatesData(sc, states, cities)
+//      .flatMap(line => line.split(","))
+//      .distinct().cache()
+//
+//
+//    println(">>> Start")
+//    usStates.foreach(println)
+//
+//
+//    val locFilter = locationsA.rdd
+//      .filter(item => item.toString.length > 3)
+//      .filter(item => !item.toString().contains("#"))
+//      .map(item => item.toString().replace("[","").replace("]","").split(" "))
+//
+
+
+//
+//    locFilter.foreach{item =>
+//      item.foreach{ city =>
+//        usStates.foreach{ element =>
+//          if(element.contains(city))
+//            println(s"$city found in $element")
+//        }
+//      }
 //    }
-    println("]")
+//    locationsA.foreach{item =>
+//      val value = item.toString().length;
+//      if(value > 3)
+//        println(item)
+//    }
 
-    println("\n>> \n")
-    resultsQ3.foreach(println)
-    println(">> \n")
-    resultsQ4.foreach(println)
-    println(">> \n")
-    resultsQ5.foreach(println)
+
+    val q1_2 = querySuportAndDeny(x)
+    val q6 = queryHowManyLanguages(x, "lang", x.count(), sqlContext)
+
+//    q1_2.foreach(println)
+
+    println(">>> End")
+
+
+
 
 
 //    differentHT.foreach(println)

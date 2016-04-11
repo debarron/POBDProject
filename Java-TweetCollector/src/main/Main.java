@@ -47,7 +47,7 @@ public class Main {
         String outputDir;
         String date = "";
         String dateUntil = "";
-        long tid = -1;
+        long tid = 715739541047418879L;
 
 //        // Display help
 //        if(args.length == 0){
@@ -65,8 +65,8 @@ public class Main {
 
 
         configDir = baseDir + "/config6.txt";
-        outputDir = baseDir + "/data-ActionOnChange-1-1.json";
-        outputDir = baseDir + "/data-Positive-1-1.json";
+        outputDir = baseDir + "/data-ActionOnChangeB-1.json";
+        outputDir = baseDir + "/data-Positive-1-1-5.json";
         tweetAmount = 100000;
         stringQuery = "#ActionOnChange";
 

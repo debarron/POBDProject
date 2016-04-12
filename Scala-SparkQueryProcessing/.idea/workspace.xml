@@ -101,10 +101,10 @@
         <option value="$PROJECT_DIR$/src/main/scala/pobd/sqp/query/hashtags/states/USStates.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pobd/sqp/StatesTest.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pobd/sqp/query/states/USStates.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/pobd/sqp/query/hashtags/package.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pobd/sqp/ui/ColorGen.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/pobd/sqp/query/DateTimeParser.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/QueryTest.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/pobd/sqp/query/hashtags/package.scala" />
       </list>
     </option>
   </component>

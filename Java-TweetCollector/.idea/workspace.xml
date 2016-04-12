@@ -27,14 +27,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.81042653">
+            <state vertical-scroll-proportion="0.0">
               <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
               <folding>
-                <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+                <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TwitterFileWriter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/io/TwitterFileWriter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.11111111">
+              <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -62,49 +72,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterImpl.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/twitter4j-core-4.0.4-sources.jar!/twitter4j/TwitterImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#81300#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#75266#75267#0" expanded="false" />
-                <element signature="e#75293#75294#0" expanded="false" />
-                <element signature="e#75346#75347#0" expanded="false" />
-                <element signature="e#75373#75374#0" expanded="false" />
-                <element signature="e#75425#75426#0" expanded="false" />
-                <element signature="e#75452#75453#0" expanded="false" />
-                <element signature="e#75521#75522#0" expanded="false" />
-                <element signature="e#75548#75549#0" expanded="false" />
-                <element signature="e#75621#75622#0" expanded="false" />
-                <element signature="e#75648#75649#0" expanded="false" />
-                <element signature="e#75699#75700#0" expanded="false" />
-                <element signature="e#75726#75727#0" expanded="false" />
-                <element signature="e#75795#75796#0" expanded="false" />
-                <element signature="e#75822#75823#0" expanded="false" />
-                <element signature="e#75881#75882#0" expanded="false" />
-                <element signature="e#75908#75909#0" expanded="false" />
-                <element signature="e#75958#75959#0" expanded="false" />
-                <element signature="e#75985#75986#0" expanded="false" />
-                <element signature="e#76052#76053#0" expanded="false" />
-                <element signature="e#76079#76080#0" expanded="false" />
-                <element signature="e#76138#76139#0" expanded="false" />
-                <element signature="e#76165#76166#0" expanded="false" />
-                <element signature="e#76218#76219#0" expanded="false" />
-                <element signature="e#76245#76246#0" expanded="false" />
-                <element signature="e#76311#76312#0" expanded="false" />
-                <element signature="e#76338#76339#0" expanded="false" />
-                <element signature="e#76387#76388#0" expanded="false" />
-                <element signature="e#76414#76415#0" expanded="false" />
-                <element signature="e#81057#81058#0" expanded="false" />
-                <element signature="e#81130#81131#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TwitterConfiguration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config/TwitterConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,11 +91,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1000#1001#0" expanded="false" />
-                <element signature="e#1054#1055#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -836,7 +799,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -846,10 +809,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4630137" sideWeight="0.503231" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26655897" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38356164" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38356164" sideWeight="0.49353796" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31232876" sideWeight="0.4927302" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1631664" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22455573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -932,11 +895,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -952,7 +911,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -993,11 +952,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,7 +968,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1046,11 +1001,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1066,7 +1017,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1099,11 +1050,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1119,7 +1066,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1152,11 +1099,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1172,7 +1115,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1205,11 +1148,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +1164,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1258,11 +1197,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1278,7 +1213,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1288,7 +1223,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1298,7 +1233,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1308,7 +1243,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1353,71 +1288,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/TwitterFileWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Main2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/TwitterBatchConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1000#1001#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/twitter4j-core-4.0.4-sources.jar!/twitter4j/TwitterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#81300#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#75266#75267#0" expanded="false" />
-            <element signature="e#75293#75294#0" expanded="false" />
-            <element signature="e#75346#75347#0" expanded="false" />
-            <element signature="e#75373#75374#0" expanded="false" />
-            <element signature="e#75425#75426#0" expanded="false" />
-            <element signature="e#75452#75453#0" expanded="false" />
-            <element signature="e#75521#75522#0" expanded="false" />
-            <element signature="e#75548#75549#0" expanded="false" />
-            <element signature="e#75621#75622#0" expanded="false" />
-            <element signature="e#75648#75649#0" expanded="false" />
-            <element signature="e#75699#75700#0" expanded="false" />
-            <element signature="e#75726#75727#0" expanded="false" />
-            <element signature="e#75795#75796#0" expanded="false" />
-            <element signature="e#75822#75823#0" expanded="false" />
-            <element signature="e#75881#75882#0" expanded="false" />
-            <element signature="e#75908#75909#0" expanded="false" />
-            <element signature="e#75958#75959#0" expanded="false" />
-            <element signature="e#75985#75986#0" expanded="false" />
-            <element signature="e#76052#76053#0" expanded="false" />
-            <element signature="e#76079#76080#0" expanded="false" />
-            <element signature="e#76138#76139#0" expanded="false" />
-            <element signature="e#76165#76166#0" expanded="false" />
-            <element signature="e#76218#76219#0" expanded="false" />
-            <element signature="e#76245#76246#0" expanded="false" />
-            <element signature="e#76311#76312#0" expanded="false" />
-            <element signature="e#76338#76339#0" expanded="false" />
-            <element signature="e#76387#76388#0" expanded="false" />
-            <element signature="e#76414#76415#0" expanded="false" />
-            <element signature="e#81057#81058#0" expanded="false" />
-            <element signature="e#81130#81131#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1430,14 +1305,6 @@
             <element signature="e#544#545#0" expanded="false" />
             <element signature="e#576#577#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/TwitterBatchScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1454,11 +1321,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81042653">
+        <state vertical-scroll-proportion="0.0">
           <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
           <folding>
-            <marker date="1460373174000" expanded="true" signature="1979:2216" placeholder="..." />
+            <marker date="1460381087000" expanded="true" signature="1979:2216" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/twitter4j-core-4.0.4-sources.jar!/twitter4j/TwitterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.021367522">
+          <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/TwitterBatchScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/TwitterBatchConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/TwitterFileWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.11111111">
+          <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>

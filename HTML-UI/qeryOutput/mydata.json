@@ -1,0 +1,10 @@
+[
+{"name":"mydata.globalwarming", "size":3000, "imports":["mydata.actiononclimate","mydata.climatechange","mydata.pollution","mydata.politics","mydata.enviroment","mydata.climatedenied","mydata.climateskeptic"]},
+{"name":"mydata.politics", "size":3000, "imports":["mydata.globalwarming","mydata.enviroment","mydata.climatedenied","mydata.climateskeptic"]},
+{"name":"mydata.actiononclimate", "size":3000, "imports":["mydata.globalwarming"]},
+{"name":"mydata.climatechange", "size":3000, "imports":["mydata.globalwarming"]},
+{"name":"mydata.enviroment", "size":10032141, "imports":["mydata.globalwarming","mydata.politics","mydata.pollution","mydata.climatedenied","mydata.climateskeptic"]},
+{"name":"mydata.pollution", "size":3000, "imports":["mydata.globalwarming","mydata.enviroment"]},
+{"name":"mydata.climatedenied", "size":3000, "imports":["mydata.globalwarming","mydata.politics","mydata.enviroment"]},
+{"name":"mydata.climateskeptic", "size":100000, "imports":["mydata.globalwarming","mydata.politics","mydata.enviroment"]}
+]

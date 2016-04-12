@@ -1,0 +1,92 @@
+<!-- 
+Example from:
+http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-with-chart-js/
+ -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>POBD Demo </title>
+        <!-- import plugin script -->
+        <script src='../Chartjs/Chart.min.js'></script>
+        <style type="text/css">
+        
+            .chart-legend li span{
+                display: inline-block;
+                width: 20px;
+                height: 12px;
+                margin-right: 5px;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <center><h1>Distribution of language among tweets</h1></center>
+        <!-- pie chart canvas element -->
+        <canvas id="countries" width="600" height="400"></canvas>
+        <div id="js-legend" class="chart-legend"></div>
+
+        <script>
+            
+            // pie chart data
+            var pieData = [
+                {
+                    "lang":"und",
+                    "count":2,
+                    "percentage":0.91324200913242,
+                    "value": 20,
+                    "color":"#378BB6",
+                    "label" : "Spanish"
+
+                },
+                {
+                    "lang":"und",
+                    "count":2,
+                    "percentage":0.91324200913242,
+                    "value": 25,
+                    "color":"#88FE34",
+                    "label" : "French"
+
+                },
+                {
+                    "lang":"und",
+                    "count":2,
+                    "percentage":0.91324200913242,
+                    "value": 5,
+                    "color":"#87EEB6",
+                    "label" : "Japanese"
+
+                },
+                {
+                    "lang":"en",
+                    "count":217,
+                    "percentage":99.08675799086758,
+                    "value": 40,
+                    "color" : "#4A65B4",
+                    "label" : "English"
+                },
+                {
+                    "lang":"und",
+                    "count":2,
+                    "percentage":0.91324200913242,
+                    "value": 10,
+                    "color":"#878BFF",
+                    "label" : "Others"
+
+                }
+            ]
+
+            var pieOptions = {
+                 segmentShowStroke : false,
+                 animateScale : true
+            }
+            // get pie chart canvas
+            var countries= document.getElementById("countries").getContext("2d");
+            // draw pie chart
+            var myChart = new Chart(countries).Pie(pieData, pieOptions);
+            document.getElementById('js-legend').innerHTML = "<h4>Languages: </h4><p>" + myChart.generateLegend() + "</p>";
+
+            
+        </script>
+    </body>
+</html>

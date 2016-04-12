@@ -1,0 +1,19 @@
+labels : [
+"#ActionOnChange", "#ActonClimate", 
+"#ClimateSkeptic", "#ClimateDenial", 
+"#Globalwarming", "#ClimateChange", "#Environment" 
+]
+
+data1 : [34, 45, 76, 10, 7, 4, 5]
+data2 : [20, 13, 1, 50, 12, 4, 5]
+data3 : [12, 9, 0, 2, 12, 90, 50]
+data4 : [7, 5, 100, 123, 12, 7, 35]
+
+
+  val PositiveHashTags = List(
+
+
+  val NegativeHashTags = List(
+
+
+  val NeutralHashTags = List("

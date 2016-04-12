@@ -1,0 +1,160 @@
+<!-- 
+Example from:
+http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-with-chart-js/
+ -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>POBD Demo Q3</title>
+        <!-- import plugin script -->
+        <script src='../Chartjs/Chart.min.js'></script>
+        <link rel="stylesheet" href="../stately/assets/css/stately.css">
+        <style>
+        ul.stately {
+            width:700px; /*width and font size must match*/
+            font-size:700px;
+            color:#f0f0f0;
+        }
+
+        
+
+       /* .stately li#va,
+        .stately li#md,
+        .stately li#mo,
+        .stately li#ca,
+        .stately li#dc { 
+          color: #FF0000;
+        }*/
+      
+  .stately li#al,
+  .stately li#ak,
+  .stately li#ar,
+  .stately li#az,
+  .stately li#ca,
+  .stately li#co,
+  .stately li#ct,
+  .stately li#de,
+  .stately li#dc,
+  .stately li#fl,
+  .stately li#ga,
+  .stately li#hi,
+  .stately li#id,
+  .stately li#il,
+  .stately li#in,
+  .stately li#ia,
+  .stately li#ks,
+  .stately li#ky,
+  .stately li#la { 
+    color: #FF0000;
+  }
+
+
+  .stately li#me,
+  .stately li#md,
+  .stately li#ma,
+  .stately li#mi,
+  .stately li#mn,
+  .stately li#ms,
+  .stately li#mo,
+  .stately li#mt,
+  .stately li#ne,
+  .stately li#nv,
+  .stately li#nh,
+  .stately li#nj,
+  .stately li#nm,
+  .stately li#ny,
+  .stately li#nc,
+  .stately li#nd,
+  .stately li#oh,
+  .stately li#ok,
+  .stately li#or{ 
+    color: #00FF00;
+  }
+
+
+  .stately li#pa,
+  .stately li#ri,
+  .stately li#sc,
+  .stately li#sd,
+  .stately li#tn,
+  .stately li#tx,
+  .stately li#ut,
+  .stately li#va,
+  .stately li#vt,
+  .stately li#wa,
+  .stately li#wv,
+  .stately li#wi,
+  .stately li#wy{ 
+    color: #0000FF;
+  }
+
+        </style>
+    </head>
+    <body>
+    <center><h2>Average Twitter user's activity state distribution</h2></center>
+        <ul class="stately">
+  <li data-state="al" id="al">A</li> 
+  <li data-state="ak" id="ak">B</li> 
+  <li data-state="ar" id="ar">C</li> 
+  <li data-state="az" id="az">D</li> 
+  <li data-state="ca" id="ca">E</li> 
+  <li data-state="co" id="co">F</li> 
+  <li data-state="ct" id="ct">G</li> 
+  <li data-state="de" id="de">H</li> 
+  <li data-state="dc" id="dc">I</li> 
+  <li data-state="fl" id="fl">J</li> 
+  <li data-state="ga" id="ga">K</li> 
+  <li data-state="hi" id="hi">L</li> 
+  <li data-state="id" id="id">M</li> 
+  <li data-state="il" id="il">N</li> 
+  <li data-state="in" id="in">O</li> 
+  <li data-state="ia" id="ia">P</li> 
+  <li data-state="ks" id="ks">Q</li> 
+  <li data-state="ky" id="ky">R</li> 
+  <li data-state="la" id="la">S</li> 
+  <li data-state="me" id="me">T</li> 
+  <li data-state="md" id="md">U</li> 
+  <li data-state="ma" id="ma">V</li> 
+  <li data-state="mi" id="mi">W</li> 
+  <li data-state="mn" id="mn">X</li> 
+  <li data-state="ms" id="ms">Y</li> 
+  <li data-state="mo" id="mo">Z</li> 
+  <li data-state="mt" id="mt">a</li> 
+  <li data-state="ne" id="ne">b</li> 
+  <li data-state="nv" id="nv">c</li> 
+  <li data-state="nh" id="nh">d</li> 
+  <li data-state="nj" id="nj">e</li> 
+  <li data-state="nm" id="nm">f</li> 
+  <li data-state="ny" id="ny">g</li> 
+  <li data-state="nc" id="nc">h</li> 
+  <li data-state="nd" id="nd">i</li> 
+  <li data-state="oh" id="oh">j</li> 
+  <li data-state="ok" id="ok">k</li> 
+  <li data-state="or" id="or">l</li> 
+  <li data-state="pa" id="pa">m</li> 
+  <li data-state="ri" id="ri">n</li> 
+  <li data-state="sc" id="sc">o</li> 
+  <li data-state="sd" id="sd">p</li> 
+  <li data-state="tn" id="tn">q</li> 
+  <li data-state="tx" id="tx">r</li> 
+  <li data-state="ut" id="ut">s</li> 
+  <li data-state="va" id="va">t</li> 
+  <li data-state="vt" id="vt">u</li> 
+  <li data-state="wa" id="wa">v</li> 
+  <li data-state="wv" id="wv">w</li> 
+  <li data-state="wi" id="wi">x</li> 
+  <li data-state="wy" id="wy">y</li> 
+</ul>
+
+<p>
+  <ul>
+    <li style="margin-left:5px;margin-right:10px;padding: 5px,5px,5px,5px;"><div style="float:left;margin-left:5px;margin-right:10px;width:10px;height:10px;border:1px solid #0000FF;background: #0000FF">  </div>0-4 Messages</li>
+    <li style="margin-left:5px;margin-right:10px;padding: 5px,5px,5px,5px;"><div style="float:left;margin-left:5px;margin-right:10px;width:10px;height:10px;border:1px solid #00FF00;background: #00FF00">  </div>5-10 Messages</li>
+    <li style="margin-left:5px;margin-right:10px;padding: 5px,5px,5px,5px;"><div style="float:left;margin-left:5px;margin-right:10px;width:10px;height:10px;border:1px solid #FF0000;background: #FF0000">  </div> More than 10 Messages</li>
+  </ul>
+</p>
+
+
+    </body>
+</html>

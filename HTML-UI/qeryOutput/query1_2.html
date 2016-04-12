@@ -1,0 +1,84 @@
+<!-- 
+Example from:
+http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-with-chart-js/
+ -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>POBD Demo </title>
+        <!-- import plugin script -->
+        <script src='../Chartjs/Chart.min.js'></script>
+        <script type="text/javascript" src="query1_2.json"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+        </script>
+        <style type="text/css">
+        
+            .chart-legend li span{
+                display: inline-block;
+                width: 20px;
+                height: 12px;
+                margin-right: 5px;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    <center><h1>Hasthtags related to global warming</h1></center>
+        
+        <!-- pie chart canvas element -->
+        <canvas id="countries" width="600" height="400"></canvas>
+        <!-- bar chart canvas element -->
+        <div id="js-legend" class="chart-legend"></div>
+
+        <script>
+        $(function(){
+            $.ajax({
+              url: 'http://localhost:28017/test/projects',
+              type: 'get',
+              dataType: 'jsonp',
+              // jsonp: 'jsonp', // mongod is expecting the parameter name to be called "jsonp"
+              success: function (data) {
+                console.log('success', data);
+
+                 // var pieData = d;
+                 //        var pieOptions = {
+                 //             segmentShowStroke : false,
+                 //             animateScale : true
+                 //        }
+                 //        // get pie chart canvas
+                 //        var countries= document.getElementById("countries").getContext("2d");
+                 //        // draw pie chart
+                 //        var myChart = new Chart(countries).Doughnut(pieData, pieOptions);
+                 //        document.getElementById('js-legend').innerHTML = "<h4>Comments about global warming: </h4><p>" + myChart.generateLegend() + "</p>";
+              },
+              error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log('error', errorThrown);
+              }
+            });
+          });
+        
+
+
+        // $.getJSON("query1_2.json", function (json) {
+        //     // will generate array with ['Monday', 'Tuesday', 'Wednesday']
+        //     var labels = json.map(function(item) {
+        //         return item;
+        //     });
+
+        //     var pieData = labels;
+        //     var pieOptions = {
+        //          segmentShowStroke : false,
+        //          animateScale : true
+        //     }
+        //     // get pie chart canvas
+        //     var countries= document.getElementById("countries").getContext("2d");
+        //     // draw pie chart
+        //     var myChart = new Chart(countries).Doughnut(pieData, pieOptions);
+        //     document.getElementById('js-legend').innerHTML = "<h4>Comments about global warming: </h4><p>" + myChart.generateLegend() + "</p>";
+
+        // });
+        </script>
+    </body>
+</html>

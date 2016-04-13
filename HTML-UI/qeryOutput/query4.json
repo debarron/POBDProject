@@ -1,0 +1,17 @@
+[
+{"code":"TYO","city":"TOKYO,JAPAN","lat":35.68,"lon":139.76},
+{"code":"AKL","city":"AUCKLAND,NEW ZEALAND","lat":-36.85,"lon":174.78},
+{"code":"BKK","city":"BANGKOK,THAILAND","lat":13.75,"lon":100.48},
+{"code":"DEL","city":"DELHI,INDIA","lat":29.01,"lon":77.38},
+{"code":"SIN","city":"SINGAPORE,SINGAPOR","lat":1.36,"lon":103.75},
+{"code":"BSB","city":"BRASILIA,BRAZIL","lat":-15.67,"lon":-47.43},
+{"code":"RIO","city":"RIO DE JANEIRO,BRAZIL","lat":-22.90,"lon":-43.24},
+{"code":"YTO","city":"TORONTO,CANADA","lat":43.64,"lon":-79.40},
+{"code":"SEA","city":"SEATTLE,USA","lat":47.61,"lon":-122.33},
+{"code":"DEL","city":"Delhi, India","lat":28.613939,"lon":77.209021},
+{"code":"KHO","city":"Khormabad, Iran","lat":33.464683,"lon": 48.338964},
+{"code":"CMX","city":"Mexico City, Mexico","lat":19.432608,"lon": -99.133208},
+{"code":"CLG","city":"Calgary, Canada","lat":51.048615, "lon":-114.070846},
+{"code":"SAF","city":"Johannesburg, South Africa","lat":-26.204103, "lon":28.047305},
+{"code":"AMS","city":"Amsterdam, Netherlands","lat":52.370216, "lon":4.895168}
+]

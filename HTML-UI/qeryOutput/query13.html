@@ -9,6 +9,7 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
         <title>POBD Demo Q89</title>
         <!-- import plugin script -->
         <script src='../Chartjs/Chart.min.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     </head>
     <body>
         <center><h1>Hashtag relevance among twitter users</h1></center>
@@ -16,60 +17,24 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
         <canvas id="income" width="600" height="400"></canvas>
         <div id="js-legend" class="chart-legend"></div>
         <script>
+        $.getJSON("query13.json", function (json) {
+
+            console.log(json);
+                var labels = json.map(function(item) {
+                    return item;
+                });
            
             // bar chart data
             var barData = {
-                labels :  [
-                    "#ActionOnChange", "#ActonClimate", "#ClimateSkeptic", "#ClimateDenial", 
-                    "#Globalwarming", "#ClimateChange", "#Environment" 
-                ],
-                datasets : [
-                    {
-                        label: "Favorite",
-                        fillColor: "rgba(20,40,60,0.2)",
-                        strokeColor: "rgba(28,48,68,1)",
-                        pointColor: "rgba(220,240,260,1)",
-                        pointStrokeColor: "#000",
-                        pointHighlightFill: "#00",
-                        pointHighlightStroke: "rgba(100,120,120,1)",
-                        // fillColor : "#FF0000",
-                        strokeColor : "#48A4D1",
-                        data : [103, 115, 54, 49, 67, 56, 97]
-                    },
-                    {
-                        label: "Retweet",
-                        fillColor: "rgba(220,37,220,0.2)",
-                        strokeColor: "rgba(220,220,220,0.3)",
-                        pointColor: "rgba(220,220,220,0.3)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,0.3)",
-                        // fillColor : "#00FF00",
-                        strokeColor : "#48A4D1",
-                        data : [82, 76, 100, 124, 60, 115, 109]
-                    },
-                    {
-                        label: "Cited",
-                        fillColor: "rgba(220,220,43,0.2)",
-                        strokeColor: "rgba(220,220,220,0.3)",
-                        pointColor: "rgba(220,220,220,0.3)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(220,220,220,1)",
-                        // fillColor : "#0000FF",
-                        strokeColor : "#48A4D1",
-                        data : [61, 45, 60, 61, 118, 85, 76]
-                    }
-                    
-                    
-                ]
+                labels: labels[0].labels,
+                  datasets: labels[0].datasets
             }
             // get bar chart canvas
             var income = document.getElementById("income").getContext("2d");
             // draw bar chart
             var myChart = new Chart(income).Radar(barData,{pointDot: false});
             // document.getElementById('js-legend').innerHTML = "<h4>Twitter Accounts: </h4><p>" + myChart.generateLegend() + "</p>";
-
+        });
         </script>
     </body>
 </html>

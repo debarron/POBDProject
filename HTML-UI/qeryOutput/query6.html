@@ -9,6 +9,7 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
         <title>POBD Demo </title>
         <!-- import plugin script -->
         <script src='../Chartjs/Chart.min.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <style type="text/css">
         
             .chart-legend li span{
@@ -27,55 +28,12 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
         <div id="js-legend" class="chart-legend"></div>
 
         <script>
-            
-            // pie chart data
-            var pieData = [
-                {
-                    "lang":"und",
-                    "count":2,
-                    "percentage":0.91324200913242,
-                    "value": 20,
-                    "color":"#378BB6",
-                    "label" : "Spanish"
+            $.getJSON("query6.json", function (json) {
+                var labels = json.map(function(item) {
+                    return item;
+                });
 
-                },
-                {
-                    "lang":"und",
-                    "count":2,
-                    "percentage":0.91324200913242,
-                    "value": 25,
-                    "color":"#88FE34",
-                    "label" : "French"
-
-                },
-                {
-                    "lang":"und",
-                    "count":2,
-                    "percentage":0.91324200913242,
-                    "value": 5,
-                    "color":"#87EEB6",
-                    "label" : "Japanese"
-
-                },
-                {
-                    "lang":"en",
-                    "count":217,
-                    "percentage":99.08675799086758,
-                    "value": 40,
-                    "color" : "#4A65B4",
-                    "label" : "English"
-                },
-                {
-                    "lang":"und",
-                    "count":2,
-                    "percentage":0.91324200913242,
-                    "value": 10,
-                    "color":"#878BFF",
-                    "label" : "Others"
-
-                }
-            ]
-
+                var pieData = labels;
             var pieOptions = {
                  segmentShowStroke : false,
                  animateScale : true
@@ -86,7 +44,7 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
             var myChart = new Chart(countries).Pie(pieData, pieOptions);
             document.getElementById('js-legend').innerHTML = "<h4>Languages: </h4><p>" + myChart.generateLegend() + "</p>";
 
-            
+            });            
         </script>
     </body>
 </html>

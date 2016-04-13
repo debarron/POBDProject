@@ -1,19 +1,55 @@
-labels : [
-"#ActionOnChange", "#ActonClimate", 
-"#ClimateSkeptic", "#ClimateDenial", 
-"#Globalwarming", "#ClimateChange", "#Environment" 
-]
+[
+{"labels":[
+"#ActionOnChange", "#ActonClimate", "#ClimateSkeptic", "#ClimateDenial", 
+"#Globalwarming", "#ClimateChange", "#Environment"],
 
-data1 : [34, 45, 76, 10, 7, 4, 5]
-data2 : [20, 13, 1, 50, 12, 4, 5]
-data3 : [12, 9, 0, 2, 12, 90, 50]
-data4 : [7, 5, 100, 123, 12, 7, 35]
-
-
-  val PositiveHashTags = List(
-
-
-  val NegativeHashTags = List(
-
-
-  val NeutralHashTags = List("
+"data":[
+{
+    "label": "@oxfamgb",
+    "fillColor": "rgba(20,40,60,0.2)",
+    "strokeColor": "rgba(28,48,68,1)",
+    "pointColor": "rgba(220,240,260,1)",
+    "pointStrokeColor": "#000",
+    "pointHighlightFill": "#00",
+    "pointHighlightStroke": "rgba(100,120,120,1)",
+    "fillColor" : "#FF0000",
+    "strokeColor" : "#48A4D1",
+    "data" : [340, 450, 706, 100, 700, 400, 500]
+},
+{
+    "label": "@GreenpeaceUK",
+    "fillColor": "rgba(220,220,220,0.2)",
+    "strokeColor": "rgba(220,220,220,1)",
+    "pointColor": "rgba(220,220,220,1)",
+    "pointStrokeColor": "#fff",
+    "pointHighlightFill": "#fff",
+    "pointHighlightStroke": "rgba(220,220,220,1)",
+    "fillColor" : "#00FF00",
+    "strokeColor" : "#48A4D1",
+    "data" : [200, 103, 1000, 50, 120, 40, 500]
+},
+{
+    "label": "@CarolineLucas",
+    "fillColor": "rgba(220,220,220,0.2)",
+    "strokeColor": "rgba(220,220,220,1)",
+    "pointColor": "rgba(220,220,220,1)",
+    "pointStrokeColor": "#fff",
+    "pointHighlightFill": "#fff",
+    "pointHighlightStroke": "rgba(220,220,220,1)",
+    "fillColor" : "#0000FF",
+    "strokeColor" : "#48A4D1",
+    "data" : [102, 90, 0, 200, 102, 900, 500]
+},
+{
+    "label": "@algore",
+    "fillColor": "rgba(220,220,220,0.2)",
+    "strokeColor": "rgba(220,220,220,1)",
+    "pointColor": "rgba(220,220,220,1)",
+    "pointStrokeColor": "#fff",
+    "pointHighlightFill": "#fff",
+    "pointHighlightStroke": "rgba(220,220,220,1)",
+    "fillColor" : "#000000",
+    "strokeColor" : "#48A4D1",
+    "data" : [400, 550, 100, 50, 102, 70, 305]
+}
+]}]

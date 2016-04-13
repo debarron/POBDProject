@@ -33,35 +33,26 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
         <div id="js-legend" class="chart-legend"></div>
 
         <script>
-        $(function(){
-            $.ajax({
-              url: 'http://localhost:28017/test/projects',
-              type: 'get',
-              dataType: 'jsonp',
-              // jsonp: 'jsonp', // mongod is expecting the parameter name to be called "jsonp"
-              success: function (data) {
-                console.log('success', data);
-
-                 // var pieData = d;
-                 //        var pieOptions = {
-                 //             segmentShowStroke : false,
-                 //             animateScale : true
-                 //        }
-                 //        // get pie chart canvas
-                 //        var countries= document.getElementById("countries").getContext("2d");
-                 //        // draw pie chart
-                 //        var myChart = new Chart(countries).Doughnut(pieData, pieOptions);
-                 //        document.getElementById('js-legend').innerHTML = "<h4>Comments about global warming: </h4><p>" + myChart.generateLegend() + "</p>";
-              },
-              error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log('error', errorThrown);
-              }
-            });
-          });
         
+        $(document).ready(function() {
+            $.ajax({
+                url: 'http://localhost:8080/api/data',
+                dataType: "jsonp",
+                cache: false,
+                timeout: 5000,
+                success: function(data) {
+                    console.log(data);
 
+                    $("#test").append(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('error ' + textStatus + " " + errorThrown);
+                }
+            });
+        });
 
-        // $.getJSON("query1_2.json", function (json) {
+        // // $.getJSON("query1_2.json", function (json) {
+        // $.getJSON("/api/data", function (json) {
         //     // will generate array with ['Monday', 'Tuesday', 'Wednesday']
         //     var labels = json.map(function(item) {
         //         return item;

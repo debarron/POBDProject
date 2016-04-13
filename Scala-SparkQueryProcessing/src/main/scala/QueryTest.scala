@@ -8,6 +8,7 @@ import java.util.Calendar
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{Row, DataFrame, SQLContext, Column}
+import pobd.sqp.mongodb.MongoInput
 import pobd.sqp.query.DateTimeParser
 import pobd.sqp.query.hashtags._
 import org.apache.log4j.{FileAppender, Level, Logger, SimpleLayout}
@@ -143,6 +144,93 @@ object QueryTest {
     sql.createDataFrame(tempData, schemaQ1).toJSON
   }
 
+  /*
+  Get the hashtags
+  Count them by group them
+  Assign a color
+  Save them as a JSON Array in q1 in the form
+  description: Description of the query, values:[]
+  */
+  // Query #1 and #2
+
+  def insertQ12(): Unit ={
+//    [
+//    {"label":"#GlobalWarming","value":"10","color":"#76F397"},
+//    {"label":"#ClimateChange","value":"7","color":"#38CAE4"},
+//    {"label":"#ActionOnChange","value":"13","color":"#FFA37E"},
+//    {"label":"#ClimateSkeptic","value":"4","color":"#2405CE"},
+//    {"label":"#ClimateDenial","value":"16","color":"#A255CE"},
+//    {"label":"#Environment","value":"20","color":"#A2A26E"},
+//    {"label":"#ActonClimate","value":"10","color":"#EEA565"}
+//    ]
+  }
+
+  def query12(data : DataFrame): Seq[String] ={
+    val tweetText = data.select("text")
+      .flatMap(it => it.toString().toLowerCase.split(" "))
+//      .filter(_.contains("#"))
+
+
+    val tp = tweetText.filter(tweet => PositiveHashTagsC.exists( ht => tweet.contains(ht)))
+    val tn = tweetText.filter(tweet => NegativeHashTagsC.exists( ht => tweet.contains(ht)))
+    val tneu = tweetText.filter(tweet => NeutralHashTagsC.exists( ht => tweet.contains(ht)))
+
+
+    val ach = tweetText.filter(_.contains("#actiononchange"))
+    val ac = tweetText.filter(_.contains("#actonclimate"))
+    val cs = tweetText.filter(_.contains("#climateskeptic"))
+    val cd = tweetText.filter(_.contains("#climatedenial"))
+    val gw = tweetText.filter(_.contains("#globalwarming"))
+    val cc = tweetText.filter(_.contains("#climatechange"))
+    val e = tweetText.filter(_.contains("#environment"))
+
+
+    println("%s %d\n%s %d\n%s %d\n%s %d\n%s %d\n%s %d\n%s %d\n\n>>SEP".format(
+    "#actiononchange",ach.count(),
+    "#actonclimate",ac.count(),
+    "#climateskeptic",cs.count(),
+    "#climatedenial",cd.count(),
+    "#globalwarming",gw.count(),
+    "#climatechange",cc.count(),
+    "#environment",e.count()))
+
+
+    val mongoValues = Array(
+      Array("#actiononchange",ach.count().toString, "#76F397"),
+      Array("#actonclimate", ac.count().toString, "#38CAE4"),
+      Array("#climateskeptic",cs.count().toString, "#FFA37E"),
+      Array("#climatedenial",cd.count().toString, "#2405CE"),
+      Array("#globalwarming",gw.count().toString, "#A255CE"),
+      Array("#climatechange",cc.count().toString, "#A2A26E"),
+      Array("#environment",  e.count().toString, "#EEA565")
+    )
+
+    println(">> Preparing the data")
+    val mon = new MongoInput()
+    mon.insertQ1(mongoValues)
+
+    println(">> data was inserted")
+
+    val p = Seq(
+      ("Support", tp.count()),
+      ("Deny", tn.count()),
+      ("Neutral", tneu.count())
+    ).map(tuple =>
+      "{\"label\":\"%s\",\"value\":%d,\"color\":\"%s\"}".format(
+        tuple._1, tuple._2 , ColorGen.getRandomRGBColor
+      )
+    )
+//
+//    tp.foreach(item => println(item.foreach(i=>print(i + ""))))
+//    println(">> SEP")
+//    tn.foreach(item => println(item.foreach(i=>print(i + ""))))
+//    println(">> SEP")
+//    tneu.foreach(item => println(item.foreach(i=>print(i + ""))))
+//    println(">> SEP")
+
+    p
+  }
+
 
   def main(args : Array[String]): Unit ={
     println(">> The value of the positive Hashtags")
@@ -211,7 +299,7 @@ object QueryTest {
 
     val qw = querySuportAndDeny(x)
 
-    x.select("createdAt").foreach(println)
+//    x.select("createdAt").foreach(println)
 
 
     val test = x.select("createdAt")
@@ -225,6 +313,14 @@ object QueryTest {
 
     test.foreach(println)
 
+    val q1_2 = query12(x)
+    val q6 = queryHowManyLanguages(x, "lang", x.count(), sqlContext)
+
+    //    q1_2.foreach(println)
+
+//    q1_2.foreach(println)
+
+    println(">>> End")
 
 
 //
@@ -307,12 +403,7 @@ object QueryTest {
 //    }
 
 
-    val q1_2 = querySuportAndDeny(x)
-    val q6 = queryHowManyLanguages(x, "lang", x.count(), sqlContext)
 
-//    q1_2.foreach(println)
-
-    println(">>> End")
 
 
 

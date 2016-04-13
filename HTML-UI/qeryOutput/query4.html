@@ -40,7 +40,7 @@
             .attr("d", path)
       });
 
-      d3.csv("cities.csv", function(error, data) {
+      d3.json("query4.json", function(error, data) {
         g.selectAll("circle")
            .data(data)
            .enter()

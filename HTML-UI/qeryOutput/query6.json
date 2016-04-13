@@ -1,12 +1,46 @@
 [
-	{
-		"lang":"und",
-		"count":2,
-		"percentage":0.91324200913242
-	},
-	{
-		"lang":"en",
-		"count":217,
-		"percentage":99.08675799086758
-	}
-]
+                {
+                    "lang":"und",
+                    "count":2,
+                    "percentage":0.91324200913242,
+                    "value": 20,
+                    "color":"#378BB6",
+                    "label" : "Spanish"
+
+                },
+                {
+                    "lang":"und",
+                    "count":2,
+                    "percentage":0.91324200913242,
+                    "value": 25,
+                    "color":"#88FE34",
+                    "label" : "French"
+
+                },
+                {
+                    "lang":"und",
+                    "count":2,
+                    "percentage":0.91324200913242,
+                    "value": 5,
+                    "color":"#87EEB6",
+                    "label" : "Japanese"
+
+                },
+                {
+                    "lang":"en",
+                    "count":217,
+                    "percentage":99.08675799086758,
+                    "value": 40,
+                    "color" : "#4A65B4",
+                    "label" : "English"
+                },
+                {
+                    "lang":"und",
+                    "count":2,
+                    "percentage":0.91324200913242,
+                    "value": 10,
+                    "color":"#878BFF",
+                    "label" : "Others"
+
+                }
+            ]

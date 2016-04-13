@@ -4,7 +4,7 @@
 		module="scala-sparkqueryprocessing-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20160331225450"
+		publication="20160412232452"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

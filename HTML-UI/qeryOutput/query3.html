@@ -8,7 +8,9 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
         <meta charset="utf-8" />
         <title>POBD Demo Q3</title>
         <!-- import plugin script -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src='../Chartjs/Chart.min.js'></script>
+
         <link rel="stylesheet" href="../stately/assets/css/stately.css">
         <style>
         ul.stately {
@@ -27,7 +29,7 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
           color: #FF0000;
         }*/
       
-  .stately li#al,
+ /* .stately li#al,
   .stately li#ak,
   .stately li#ar,
   .stately li#az,
@@ -87,9 +89,46 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
   .stately li#wi,
   .stately li#wy{ 
     color: #0000FF;
-  }
+  }*/
 
         </style>
+        <script>
+          $.getJSON("query3.json", function (json) {
+            // will generate array with ['Monday', 'Tuesday', 'Wednesday']
+            var labels = json.map(function(item) {
+                return item;
+            });
+
+            for (var i = 0; i < labels.length; i++) {
+              var item = labels[i];
+
+              var color = item.color;
+              var states = item.states;
+
+              for(var s = 0; s < states.length; s++){
+                var sItem = document.getElementById(states[s]);
+                sItem.style.color = color;
+
+                console.log("State " + states[s]);
+              }
+
+              console.log(color + " " + states.length);
+            }
+            
+
+            // var pieData = labels;
+            // var pieOptions = {
+            //      segmentShowStroke : false,
+            //      animateScale : true
+            // }
+            // // get pie chart canvas
+            // var countries= document.getElementById("countries").getContext("2d");
+            // // draw pie chart
+            // var myChart = new Chart(countries).Doughnut(pieData, pieOptions);
+            // document.getElementById('js-legend').innerHTML = "<h4>Comments about global warming: </h4><p>" + myChart.generateLegend() + "</p>";
+
+        });
+        </script>
     </head>
     <body>
     <center><h2>Average Twitter user's activity state distribution</h2></center>

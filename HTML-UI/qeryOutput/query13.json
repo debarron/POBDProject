@@ -1,0 +1,43 @@
+[{
+                "labels" :  [
+                    "#ActionOnChange", "#ActonClimate", "#ClimateSkeptic", "#ClimateDenial", 
+                    "#Globalwarming", "#ClimateChange", "#Environment" 
+                ],
+                "datasets" : [
+                    {
+                        "label": "Favorite",
+                        "fillColor": "rgba(20,40,60,0.2)",
+                        "strokeColor": "rgba(28,48,68,1)",
+                        "pointColor": "rgba(220,240,260,1)",
+                        "pointStrokeColor": "#000",
+                        "pointHighlightFill": "#00",
+                        "pointHighlightStroke": "rgba(100,120,120,1)",
+                        "strokeColor" : "#48A4D1",
+                        "data" : [103, 115, 54, 49, 67, 56, 97]
+                    },
+                    {
+                        "label": "Retweet",
+                        "fillColor": "rgba(220,37,220,0.2)",
+                        "strokeColor": "rgba(220,220,220,0.3)",
+                        "pointColor": "rgba(220,220,220,0.3)",
+                        "pointStrokeColor": "#fff",
+                        "pointHighlightFill": "#fff",
+                        "pointHighlightStroke": "rgba(220,220,220,0.3)",
+                        "strokeColor" : "#48A4D1",
+                        "data" : [82, 76, 100, 124, 60, 115, 109]
+                    },
+                    {
+                        "label": "Cited",
+                        "fillColor": "rgba(220,220,43,0.2)",
+                        "strokeColor": "rgba(220,220,220,0.3)",
+                        "pointColor": "rgba(220,220,220,0.3)",
+                        "pointStrokeColor": "#fff",
+                        "pointHighlightFill": "#fff",
+                        "pointHighlightStroke": "rgba(220,220,220,1)",
+                        "strokeColor" : "#48A4D1",
+                        "data" : [61, 45, 60, 61, 118, 85, 76]
+                    }
+                    
+                    
+                ]
+            }]

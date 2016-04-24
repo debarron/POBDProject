@@ -13,6 +13,8 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
         </script>
+        <script type="text/javascript" src="../socket.io-client/socket.io.js"></script> 
+
         <style type="text/css">
         
             .chart-legend li span{
@@ -31,45 +33,46 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
         <canvas id="countries" width="600" height="400"></canvas>
         <!-- bar chart canvas element -->
         <div id="js-legend" class="chart-legend"></div>
+<!-- 
+<body>
+  <script>
+  var socket = io.connect('http://localhost:8001');
+  socket.on('date', function(data){
+    $('#date').text(data.date);
+  });
 
+  $(document).ready(function(){
+      socket.emit('client_data', {'letter': String.fromCharCode(e.charCode)});
+    });
+
+  </script>
+  <div id="date"></div>
+  <textarea id="text"></textarea>
+</body>
+ -->
         <script>
         
-        $(document).ready(function() {
-            $.ajax({
-                url: 'http://localhost:8080/api/data',
-                dataType: "jsonp",
-                cache: false,
-                timeout: 5000,
-                success: function(data) {
-                    console.log(data);
-
-                    $("#test").append(data);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('error ' + textStatus + " " + errorThrown);
-                }
-            });
-        });
+   
 
         // // $.getJSON("query1_2.json", function (json) {
-        // $.getJSON("/api/data", function (json) {
-        //     // will generate array with ['Monday', 'Tuesday', 'Wednesday']
-        //     var labels = json.map(function(item) {
-        //         return item;
-        //     });
+        $.getJSON("http://localhost:8080/api/data", function (json) {
+            // will generate array with ['Monday', 'Tuesday', 'Wednesday']
+            var labels = json.map(function(item) {
+                return item;
+            });
 
-        //     var pieData = labels;
-        //     var pieOptions = {
-        //          segmentShowStroke : false,
-        //          animateScale : true
-        //     }
-        //     // get pie chart canvas
-        //     var countries= document.getElementById("countries").getContext("2d");
-        //     // draw pie chart
-        //     var myChart = new Chart(countries).Doughnut(pieData, pieOptions);
-        //     document.getElementById('js-legend').innerHTML = "<h4>Comments about global warming: </h4><p>" + myChart.generateLegend() + "</p>";
+            var pieData = labels;
+            var pieOptions = {
+                 segmentShowStroke : false,
+                 animateScale : true
+            }
+            // get pie chart canvas
+            var countries= document.getElementById("countries").getContext("2d");
+            // draw pie chart
+            var myChart = new Chart(countries).Doughnut(pieData, pieOptions);
+            document.getElementById('js-legend').innerHTML = "<h4>Comments about global warming: </h4><p>" + myChart.generateLegend() + "</p>";
 
-        // });
+        });
         </script>
     </body>
 </html>

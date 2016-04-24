@@ -10,7 +10,5 @@ module.exports = function (app) {
             res.json(subjectDetails); // return all nerds in JSON format
 
         });
-
-        
     });
 }

@@ -33,7 +33,7 @@ http://www.webdesignerdepot.com/2013/11/easily-create-stunning-animated-charts-w
             var income = document.getElementById("income").getContext("2d");
             // draw bar chart
             var myChart = new Chart(income).Radar(barData,{pointDot: false});
-            // document.getElementById('js-legend').innerHTML = "<h4>Twitter Accounts: </h4><p>" + myChart.generateLegend() + "</p>";
+            document.getElementById('js-legend').innerHTML = "<h4>Twitter Accounts: </h4><p>" + myChart.generateLegend() + "</p>";
         });
         </script>
     </body>

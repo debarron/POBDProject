@@ -25,7 +25,7 @@ function makeGraphs(error, apiData) {
     console.log(apiData);
     var dataset = apiData;
     //convert numerical values from strings to numbers
-    var data = dataset.map(function (d) { d.value = +d["count"]; return d; });
+    var data = dataset.map(function (d) { d.value = +d["value"]; return d; });
     
     //bubbles needs very specific format, convert data to this.
     var nodes = bubble.nodes({ children: data }).filter(function (d) { return !d.children; });
@@ -49,7 +49,7 @@ function makeGraphs(error, apiData) {
         .attr("x", function (d) { return d.x; })
         .attr("y", function (d) { return d.y + 5; })
         .attr("text-anchor", "middle")
-        .text(function (d) { return d["hastag"]; })
+        .text(function (d) { return d["label"]; })
         .style({
         "fill": "white", 
         "font-family": "Helvetica Neue, Helvetica, Arial, san-serif",
